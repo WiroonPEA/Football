@@ -49,6 +49,23 @@
             padding: 20px;
             font-size: 20px;
         }
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+        }
+        .controls button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -65,6 +82,10 @@
             </div>
         </div>
         <div class="timer" id="match-timer">00:00</div>
+        <div class="controls">
+            <button onclick="incrementScore('a')">เพิ่มคะแนน ทีม กฟฉ.1</button>
+            <button onclick="incrementScore('b')">เพิ่มคะแนน ทีม กฟฉ.2</button>
+        </div>
     </div>
 
     <script>
@@ -82,13 +103,16 @@
             timer.textContent = formatTime(seconds);
         }, 1000);
 
-        // For demo purposes, you can update scores dynamically
         const scoreA = document.getElementById('score-a');
         const scoreB = document.getElementById('score-b');
 
-        // Simulate score updates
-        setTimeout(() => scoreA.textContent = "1", 5000); // Team A scores after 5 seconds
-        setTimeout(() => scoreB.textContent = "1", 10000); // Team B scores after 10 seconds
+        function incrementScore(team) {
+            if (team === 'a') {
+                scoreA.textContent = parseInt(scoreA.textContent) + 1;
+            } else if (team === 'b') {
+                scoreB.textContent = parseInt(scoreB.textContent) + 1;
+            }
+        }
     </script>
 </body>
 </html>
