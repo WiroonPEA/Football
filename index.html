@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Scoreboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .scoreboard {
+            width: 600px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .header {
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .teams {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            font-size: 18px;
+            border-bottom: 1px solid #ddd;
+        }
+        .teams .team {
+            flex: 1;
+            text-align: center;
+        }
+        .teams .score {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .timer {
+            text-align: center;
+            padding: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scoreboard">
+        <div class="header">FIFA World Cup</div>
+        <div class="teams">
+            <div class="team" id="team-a">
+                <div class="name">กฟฉ.1</div>
+                <div class="score" id="score-a">0</div>
+            </div>
+            <div class="team" id="team-b">
+                <div class="name">กฟฉ.2</div>
+                <div class="score" id="score-b">0</div>
+            </div>
+        </div>
+        <div class="timer" id="match-timer">00:00</div>
+    </div>
+
+    <script>
+        let timer = document.getElementById('match-timer');
+        let seconds = 0;
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        setInterval(() => {
+            seconds++;
+            timer.textContent = formatTime(seconds);
+        }, 1000);
+
+        // For demo purposes, you can update scores dynamically
+        const scoreA = document.getElementById('score-a');
+        const scoreB = document.getElementById('score-b');
+
+        // Simulate score updates
+        setTimeout(() => scoreA.textContent = "1", 5000); // Team A scores after 5 seconds
+        setTimeout(() => scoreB.textContent = "1", 10000); // Team B scores after 10 seconds
+    </script>
+</body>
+</html>
